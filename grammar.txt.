@@ -1,0 +1,41 @@
+ARRAY DECLARATION COMPILER
+
+1. PURPOSE
+This compiler checks whether array declarations follow the correct syntax and semantic rules.
+
+2. SUPPORTED DATA TYPES
+int, float, char
+
+3. CONTEXT-FREE GRAMMAR (CFG)
+
+P → D P | ε
+D → T id [ num ] ;
+T → int | float | char
+
+4. SYMBOL MEANINGS
+P   = Complete program
+D   = Array declaration
+T   = Data type
+id  = Array variable name
+num = Integer array size
+ε   = Empty sequence
+
+5. VALID DECLARATIONS
+int marks[10];
+float prices[5];
+char name[20];
+
+6. INVALID DECLARATIONS
+int marks[10]     (missing semicolon)
+int marks 10];    (missing opening bracket)
+int marks[0];     (array size must be positive)
+int 123[5];       (invalid variable name)
+
+7. SEMANTIC RULES
+- Array size must be a positive integer.
+- Variable names must be valid identifiers.
+- Duplicate array names are not allowed in the same scope.
+- Only int, float and char types are supported.
+
+8. PROJECT TECHNOLOGIES
+Python, Flask, HTML, CSS and JavaScript.
