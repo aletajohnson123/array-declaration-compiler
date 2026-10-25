@@ -75,4 +75,3 @@ def tokenize(source):
     tokens.append({"type": "EOF", "value": ""})
 
     return tokens, errors
-
