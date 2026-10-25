@@ -1,62 +1,144 @@
-<!-- Frontend HTML file for the Array Declaration Compiler -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Array Declaration Compiler</title>
-  <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-  <main class="container">
-    <header>
-      <h1>Array Declaration Compiler</h1>
-      <p>Check whether array declarations follow the required syntax and rules.</p>
-    </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <section class="card">
-      <label for="sourceCode">Enter array declarations</label>
-      <textarea id="sourceCode" spellcheck="false">int marks[10];
+    <title>Array Declaration Compiler</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+        defer
+    ></script>
+</head>
+
+<body>
+    <main class="container">
+
+        <header>
+            <h1>Array Declaration Compiler</h1>
+            <p>
+                Check whether array declarations follow the required
+                syntax and semantic rules.
+            </p>
+        </header>
+
+        <section class="card">
+            <label for="sourceCode">Enter array declarations</label>
+
+            <textarea id="sourceCode" spellcheck="false">int marks[10];
 float prices[5];
 char name[20];</textarea>
-      <div class="buttons">
-        <button id="analyzeBtn" type="button">Analyze Code</button>
-        <button id="exampleBtn" type="button" class="secondary">Load Example</button>
-        <button id="clearBtn" type="button" class="light">Clear</button>
-      </div>
-      <p class="hint">Enter one declaration per line. Each declaration must end with a semicolon.</p>
-    </section>
 
-    <section class="card">
-      <div class="heading-row">
-        <h2>Analysis Results</h2>
-        <span id="status" class="status">Not analyzed</span>
-      </div>
-      <div class="summary">
-        <div><strong id="total">0</strong><span>Statements</span></div>
-        <div><strong id="valid">0</strong><span>Valid</span></div>
-        <div><strong id="errors">0</strong><span>Errors</span></div>
-      </div>
-      <div id="messages" aria-live="polite"><p class="empty">Click Analyze Code to see results.</p></div>
-    </section>
+            <div class="buttons">
+                <button id="analyzeBtn" type="button">
+                    Analyze Code
+                </button>
 
-    <section class="card">
-      <h2>Symbol Table</h2>
-      <div class="table-scroll">
-        <table>
-          <thead><tr><th>Variable Name</th><th>Data Type</th><th>Array Size</th></tr></thead>
-          <tbody id="symbols"><tr><td colspan="3" class="empty">No symbols yet</td></tr></tbody>
-        </table>
-      </div>
-    </section>
+                <button id="exampleBtn" type="button" class="secondary">
+                    Load Example
+                </button>
 
-    <section class="card rules">
-      <h2>Supported Rules</h2>
-      <p><b>Data types:</b> int, float, char</p>
-      <p><b>Grammar:</b> <code>D → T id [ num ] ;</code></p>
-      <p>Array size must be a positive integer. Variable names must be valid identifiers. Duplicate names are not allowed.</p>
-    </section>
-  </main>
-  <script src="static/script.js"></script>
+                <button id="clearBtn" type="button" class="light">
+                    Clear
+                </button>
+            </div>
+
+            <p class="hint">
+                Enter one declaration per line. Each declaration must
+                end with a semicolon.
+            </p>
+        </section>
+
+        <section class="card">
+            <div class="heading-row">
+                <h2>Analysis Results</h2>
+                <span id="status" class="status" role="status">
+                    Not analyzed
+                </span>
+            </div>
+
+            <div class="summary">
+                <div>
+                    <strong id="total">0</strong>
+                    <span>Statements</span>
+                </div>
+
+                <div>
+                    <strong id="valid">0</strong>
+                    <span>Valid</span>
+                </div>
+
+                <div>
+                    <strong id="errors">0</strong>
+                    <span>Errors</span>
+                </div>
+            </div>
+
+            <div id="messages" aria-live="polite">
+                <p class="empty">
+                    Click Analyze Code to see results.
+                </p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Symbol Table</h2>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable Name</th>
+                            <th>Data Type</th>
+                            <th>Array Size</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="symbols">
+                        <tr>
+                            <td colspan="3" class="empty">
+                                No symbols yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card rules">
+            <h2>Supported Rules</h2>
+
+            <p><b>Data types:</b> int, float, char</p>
+
+            <p>
+                <b>Grammar:</b>
+                <code>D → T id [ num ] ;</code>
+            </p>
+
+            <p>
+                Array size must be a positive integer.
+                Variable names must be valid identifiers.
+                Duplicate names are not allowed.
+            </p>
+
+            <p class="hint">
+                Lexical, syntax, and semantic checks are performed
+                by the Python backend.
+            </p>
+        </section>
+
+        <footer>
+            <p>Array Declaration Compiler Project</p>
+        </footer>
+
+    </main>
 </body>
 </html>
+
